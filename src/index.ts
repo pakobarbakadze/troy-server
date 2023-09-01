@@ -1,16 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
 import cors from "cors";
 
+import db from "./config/db/data-source";
 import logger from "./utils/winston";
 
-dotenv.config();
+import router from "./router";
+
 const app = express();
+db();
 
 app.use(express.json());
 app.use(cors());
 
-// app.use("/api");
+app.use("/api", router);
 
 app.get("/", (req, res) => {
   res.send("API is running....");
