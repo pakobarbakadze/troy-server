@@ -6,7 +6,7 @@ const logFormat = winston.format.printf((info) => {
   const logLevel = winston.format
     .colorize()
     .colorize(info.level, info.level.toUpperCase());
-  return `${formattedTimestamp} - ${circle} ${logLevel}: ${info.message}\n`;
+  return `${formattedTimestamp} - ${circle} ${logLevel}: ${info.message}`;
 });
 
 const logger = winston.createLogger({
@@ -25,6 +25,7 @@ const logger = winston.createLogger({
 if (process.env.NODE_ENV !== "production") {
   logger.add(
     new winston.transports.Console({
+      level: "debug",
       format: winston.format.combine(logFormat),
     })
   );
