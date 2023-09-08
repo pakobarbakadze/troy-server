@@ -1,10 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column} from "typeorm";
+import Model from "./Model";
 
 @Entity()
-export class Stay {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class Stay extends Model {
   @Column()
   name: string;
 
