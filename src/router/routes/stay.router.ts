@@ -1,7 +1,8 @@
 import express from "express";
-const router = express.Router();
+
 import controller from "../../controllers/stay.controller";
 
+const router = express.Router();
 router.get("/", controller.getStays);
 router.post("/", controller.saveStay);
 
