@@ -11,7 +11,7 @@ export class User extends Model {
   @Column()
   lastName: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
@@ -19,7 +19,6 @@ export class User extends Model {
 
   @BeforeInsert()
   async hashPass() {
-    console.log("HashPass");
     const salt = await bcrypt.genSalt();
     this.password = await bcrypt.hash(this.password, salt);
   }
